@@ -4,9 +4,7 @@ import sys
 from datetime import datetime
 import seaborn as sns
 
-##/home/j/Documents/Python/stadiums
-
-#open the file
+#check if the file exists
 def open_file(file_name, mode):     
     try:
         f = open(file_name, mode)
@@ -55,7 +53,7 @@ def league_level(country):
         std = country[0]
     return std
 
-#
+#modify the DF and calculate the avarage for a given division
 def avg_capacity(df):
     df.columns=['Name', 'City', 'Club', 'Capacity']
     df['Capacity'] = df['Capacity'].str.replace(" ","")
