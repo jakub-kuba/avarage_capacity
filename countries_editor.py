@@ -1,7 +1,6 @@
 # Author: jakub-kuba
 
-# The program allows you to edit a file containing countries
-# and addresses (stadiony.net)
+# not in use
 
 import pickle
 import sys
