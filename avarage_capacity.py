@@ -6,6 +6,7 @@
 import pandas as pd
 import json
 import sys
+import requests
 from datetime import datetime
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -57,6 +58,20 @@ def get_address(countries, selected, address):
     code = countries.get(selected)
     cou = pd.read_html(address+code)
     return cou
+
+
+def get_address(countries, selected, address):
+    """Return the address of the selected country."""
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+    code = countries.get(selected)
+    response = requests.get(address+code, headers=headers)
+    if response.status_code == 200:
+        cou = pd.read_html(response.text)
+        return cou
+    else:
+        print(f"Failed to retrieve page. Status code: {response.status_code}")
 
 
 def league_level(country):
@@ -115,7 +130,7 @@ def main():
     y = "League"
     colours = ["#07941c", "#8c8989", "#8c8989", "#8c8989", "#8c8989"]
     customPalette = sns.set_palette(sns.color_palette(colours))
-    sns.barplot(x,y, data=new_df, orient='h', palette=customPalette)
+    sns.barplot(x=x, y=y, data=new_df, orient='h', palette=customPalette)
     plt.show()
 
 if __name__== "__main__":

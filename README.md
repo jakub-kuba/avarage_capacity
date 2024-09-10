@@ -2,4 +2,4 @@ This Python program allows you to check the average capacity of a stadium in the
 
 The data source is the website http://stadiony.net/ (English version: http://stadiumdb.com/).
 
-The code was also used on my website: https://data.jakub-kuba.com/cap
+The code was also used on my website: https://data.jakub-kuba.com/capacity
